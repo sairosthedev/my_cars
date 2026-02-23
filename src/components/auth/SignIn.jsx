@@ -63,9 +63,9 @@ function SignIn() {
       <div className="w-full relative z-10">
         <div className="flex justify-center">
           <div className="flex items-center space-x-2">
-            <GiSteeringWheel className="text-4xl text-gold-400" />
-            <span className="text-2xl font-bold text-white drop-shadow-lg font-playfair">
-              Auto<span className="text-gold-400">Track</span>
+            <GiSteeringWheel className="text-4xl text-yellow-400" />
+            <span className="text-2xl font-bold text-white drop-shadow-lg">
+              Auto<span className="text-yellow-400">Track</span>
             </span>
           </div>
         </div>
@@ -74,7 +74,7 @@ function SignIn() {
         </h2>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow-xl rounded-lg sm:px-10 border-t-4 border-navy-600">
+          <div className="bg-white py-8 px-4 shadow-xl rounded-lg sm:px-10 border-t-4 border-yellow-500">
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
                 <div className="bg-red-50 border border-red-500 text-red-500 px-4 py-3 rounded relative">
@@ -115,7 +115,7 @@ function SignIn() {
                   <input
                     id="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-red-800 focus:ring-red-800 border-gray-300 rounded"
+                    className="h-4 w-4 text-yellow-600 focus:ring-yellow-600 border-gray-300 rounded"
                   />
                   <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                     Remember me
@@ -123,7 +123,7 @@ function SignIn() {
                 </div>
 
                 <div className="text-sm">
-                  <a href="#" className="font-medium text-red-800 hover:text-red-900">
+                  <a href="#" className="font-medium text-yellow-600 hover:text-yellow-700">
                     Forgot password?
                   </a>
                 </div>
@@ -132,7 +132,7 @@ function SignIn() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-navy-800 to-navy-600 hover:from-navy-900 hover:to-navy-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy-600 font-inter"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
               >
                 {isLoading ? (
                   <span className="flex items-center">
@@ -161,7 +161,7 @@ function SignIn() {
               <div className="mt-6">
                 <Link
                   to="/signup"
-                  className="w-full flex justify-center py-2 px-4 border border-red-800 rounded-md shadow-sm text-sm font-medium text-red-800 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800"
+                  className="w-full flex justify-center py-2 px-4 border border-yellow-600 rounded-md shadow-sm text-sm font-medium text-yellow-600 bg-white hover:bg-yellow-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600"
                 >
                   Create new account
                 </Link>

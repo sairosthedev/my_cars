@@ -858,10 +858,10 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
               </span>
             </FormItem>
 
-            {/* Submit Button - Updated with navy gradient */}
+            {/* Submit Button - Updated with blue gradient */}
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-navy-800 to-navy-600 hover:from-navy-900 hover:to-navy-700 text-white transition-all duration-300 font-inter"
+              className="w-full bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 text-white transition-all duration-300"
               disabled={isSubmitting}
             >
               {isSubmitting ? (
@@ -877,8 +877,8 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
               )}
             </Button>
 
-            {/* Required Fields Note - Updated with navy color */}
-            <p className="text-sm text-navy-600 mt-4 font-inter">
+            {/* Required Fields Note - Updated with blue color */}
+            <p className="text-sm text-blue-700 mt-4">
               * Required fields
             </p>
           </Form>

@@ -52,7 +52,7 @@ function MaintenancePage() {
   // JSX for the component
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Schedule Maintenance</h2>
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent mb-6">Schedule Maintenance</h2>
       
       <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-xl shadow-lg p-6">
         <div>
@@ -62,7 +62,7 @@ function MaintenancePage() {
           <input
             type="text"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-900 focus:border-transparent outline-none transition-all duration-200"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all duration-200"
             value={maintenanceData.vehicleId}
             onChange={(e) => setMaintenanceData({...maintenanceData, vehicleId: e.target.value})}
           />
@@ -74,7 +74,7 @@ function MaintenancePage() {
           </label>
           <select
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-900 focus:border-transparent outline-none transition-all duration-200"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all duration-200"
             value={maintenanceData.serviceType}
             onChange={(e) => setMaintenanceData({...maintenanceData, serviceType: e.target.value})}
           >
@@ -92,7 +92,7 @@ function MaintenancePage() {
           <input
             type="date"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-900 focus:border-transparent outline-none transition-all duration-200"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all duration-200"
             value={maintenanceData.scheduledDate}
             onChange={(e) => setMaintenanceData({...maintenanceData, scheduledDate: e.target.value})}
           />
@@ -103,7 +103,7 @@ function MaintenancePage() {
             Notes
           </label>
           <textarea
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-900 focus:border-transparent outline-none transition-all duration-200"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all duration-200"
             rows="4"
             value={maintenanceData.notes}
             onChange={(e) => setMaintenanceData({...maintenanceData, notes: e.target.value})}
@@ -113,7 +113,7 @@ function MaintenancePage() {
         <div className="flex space-x-4">
           <button
             type="submit"
-            className="flex-1 bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-900 transition-colors duration-200"
+            className="flex-1 bg-gradient-to-r from-yellow-500 to-yellow-400 text-blue-900 px-4 py-2 rounded-lg hover:from-yellow-400 hover:to-yellow-300 transition-all duration-200 font-semibold shadow-lg shadow-yellow-500/40"
           >
             Schedule Maintenance
           </button>

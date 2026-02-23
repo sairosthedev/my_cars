@@ -80,25 +80,25 @@ function Stats({ totalValue, carCount, averageYear, onExportData }) {
     { 
       name: 'Schedule Maintenance', 
       icon: '🔧', 
-      bgColor: 'bg-emerald-50',
-      hoverBg: 'hover:bg-emerald-100',
-      textColor: 'text-emerald-700',
+      bgColor: 'bg-yellow-50',
+      hoverBg: 'hover:bg-yellow-100',
+      textColor: 'text-yellow-700',
       onClick: handleScheduleMaintenance 
     },
     { 
       name: 'Analytics', 
       icon: '📊', 
-      bgColor: 'bg-indigo-50',
-      hoverBg: 'hover:bg-indigo-100',
-      textColor: 'text-indigo-700',
+      bgColor: 'bg-purple-50',
+      hoverBg: 'hover:bg-purple-100',
+      textColor: 'text-purple-700',
       onClick: handleAnalytics 
     },
     { 
       name: 'Export Data', 
       icon: '📤', 
-      bgColor: 'bg-orange-50',
-      hoverBg: 'hover:bg-orange-100',
-      textColor: 'text-orange-700',
+      bgColor: 'bg-red-50',
+      hoverBg: 'hover:bg-red-100',
+      textColor: 'text-red-700',
       onClick: handleExportData 
     }
   ]
@@ -127,14 +127,14 @@ function Stats({ totalValue, carCount, averageYear, onExportData }) {
         {/* Total Cars Card */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-center space-x-4">
-            <div className="p-3 bg-emerald-50 rounded-xl group-hover:bg-emerald-100 transition-colors duration-300">
-              <TruckIcon className="h-7 w-7 text-emerald-600" />
+            <div className="p-3 bg-yellow-50 rounded-xl group-hover:bg-yellow-100 transition-colors duration-300">
+              <TruckIcon className="h-7 w-7 text-yellow-600" />
             </div>
             <div>
               <p className="text-sm font-medium text-gray-600">Fleet Size</p>
               <p className="text-2xl font-bold text-gray-900">{carCount} vehicles</p>
               <div className="mt-1.5 flex items-center text-sm">
-                <span className="font-medium text-emerald-600">+3</span>
+                <span className="font-medium text-yellow-600">+3</span>
                 <span className="ml-1.5 text-gray-500">new additions</span>
               </div>
             </div>
@@ -144,14 +144,14 @@ function Stats({ totalValue, carCount, averageYear, onExportData }) {
         {/* Average Year Card */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-center space-x-4">
-            <div className="p-3 bg-indigo-50 rounded-xl group-hover:bg-indigo-100 transition-colors duration-300">
-              <CalendarIcon className="h-7 w-7 text-indigo-600" />
+            <div className="p-3 bg-purple-50 rounded-xl group-hover:bg-purple-100 transition-colors duration-300">
+              <CalendarIcon className="h-7 w-7 text-purple-600" />
             </div>
             <div>
               <p className="text-sm font-medium text-gray-600">Average Model Year</p>
               <p className="text-2xl font-bold text-gray-900">{averageYear || 'N/A'}</p>
               <p className="mt-1.5 text-sm text-gray-500">
-                Average age: <span className="text-indigo-600 font-medium">
+                Average age: <span className="text-purple-600 font-medium">
                   {averageYear ? `${currentYear - averageYear} years` : 'N/A'}
                 </span>
               </p>
@@ -162,15 +162,15 @@ function Stats({ totalValue, carCount, averageYear, onExportData }) {
         {/* Fleet Utilization Card */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 group">
           <div className="flex items-center space-x-4">
-            <div className="p-3 bg-orange-50 rounded-xl group-hover:bg-orange-100 transition-colors duration-300">
-              <ChartBarIcon className="h-7 w-7 text-orange-600" />
+            <div className="p-3 bg-red-50 rounded-xl group-hover:bg-red-100 transition-colors duration-300">
+              <ChartBarIcon className="h-7 w-7 text-red-700" />
             </div>
             <div className="flex-1">
               <p className="text-sm font-medium text-gray-600">Capacity Utilization</p>
               <p className="text-2xl font-bold text-gray-900">{utilizationPercentage}%</p>
               <div className="mt-2.5 w-full bg-gray-100 rounded-full h-2">
                 <div 
-                  className="bg-orange-500 h-2 rounded-full transition-all duration-500 ease-out"
+                  className="bg-gradient-to-r from-red-700 to-red-600 h-2 rounded-full transition-all duration-500 ease-out"
                   style={{ width: `${utilizationPercentage}%` }}
                 />
               </div>

@@ -12,7 +12,7 @@ const Layout = ({ children, isAuthenticated, successMessage }) => {
           <NavBar />
         </div>
       )}
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full ${isAuthenticated ? 'mt-20' : ''} flex-grow`}>
+      <div className={`max-w-[1600px] mx-auto px-3 sm:px-4 lg:px-6 w-full ${isAuthenticated ? 'mt-20' : ''} flex-grow`}>
         {successMessage && isAuthenticated && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4">
             {successMessage}

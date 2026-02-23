@@ -10,13 +10,13 @@ function SearchBar({ searchTerm, onSearchChange, sortBy, onSortChange }) {
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search cars..."
-          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-900 focus:border-transparent outline-none transition-all duration-200"
+          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all duration-200"
         />
       </div>
       <select
         value={sortBy}
         onChange={(e) => onSortChange(e.target.value)}
-        className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-900 focus:border-transparent outline-none bg-white transition-all duration-200"
+        className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none bg-white transition-all duration-200"
       >
         <option value="newest">Newest First</option>
         <option value="oldest">Oldest First</option>

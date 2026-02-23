@@ -52,7 +52,7 @@ function CarList({ cars, onDelete }) {
         <p className="text-gray-600 mb-4">No cars in inventory yet.</p>
         <Link 
           to="/add"
-          className="inline-block bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-900 transition-colors duration-200"
+          className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-400 text-blue-900 px-6 py-2 rounded-lg hover:from-yellow-400 hover:to-yellow-300 transition-all duration-200 font-semibold shadow-lg shadow-yellow-500/40"
         >
           Add Your First Car
         </Link>
@@ -65,10 +65,10 @@ function CarList({ cars, onDelete }) {
     <div className="container mx-auto p-4">
       {/* Header with Add New Car button */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-red-800">Your Inventory</h2>
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">Your Inventory</h2>
         <Link 
           to="/add"
-          className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-900 transition-colors duration-200"
+          className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-blue-900 px-6 py-2 rounded-lg hover:from-yellow-400 hover:to-yellow-300 transition-all duration-200 font-semibold shadow-lg shadow-yellow-500/40"
         >
           Add New Car
         </Link>
@@ -92,11 +92,11 @@ function CarList({ cars, onDelete }) {
             </div>
             {/* Car details section */}
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-red-800">
+              <h3 className="text-xl font-semibold text-blue-900">
                 {car.year} {car.make} {car.model}
               </h3>
               <div className="mt-2 text-gray-600">
-                <p className="text-lg font-medium text-red-700">
+                <p className="text-lg font-medium text-yellow-600">
                   {formatCurrency(car.price)}
                 </p>
                 <p className="mt-1">Mileage: {car.mileage?.toLocaleString() || 'N/A'}</p>
@@ -119,14 +119,14 @@ function CarList({ cars, onDelete }) {
                 </button>
                 <button
                   onClick={(e) => handleEdit(car.id, e)}
-                  className="p-2 text-green-600 hover:bg-green-50 rounded-full transition-colors duration-200"
+                  className="p-2 text-yellow-600 hover:bg-yellow-50 rounded-full transition-colors duration-200"
                   title="Edit Car"
                 >
                   <PencilIcon className="h-5 w-5" />
                 </button>
                 <button
                   onClick={(e) => handleDelete(car.id, e)}
-                  className="p-2 text-red-600 hover:bg-red-50 rounded-full transition-colors duration-200"
+                  className="p-2 text-red-700 hover:bg-red-50 rounded-full transition-colors duration-200"
                   title="Delete Car"
                 >
                   <TrashIcon className="h-5 w-5" />

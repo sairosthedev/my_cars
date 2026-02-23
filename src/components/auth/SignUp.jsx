@@ -95,9 +95,9 @@ function SignUp() {
       <div className="w-full relative z-10">
         <div className="flex justify-center">
           <div className="flex items-center space-x-2">
-            <GiSteeringWheel className="text-4xl text-white" />
+            <GiSteeringWheel className="text-4xl text-yellow-400" />
             <span className="text-2xl font-bold text-white drop-shadow-lg">
-              Auto<span className="text-amber-400">Track</span>
+              Auto<span className="text-yellow-400">Track</span>
             </span>
           </div>
         </div>
@@ -106,7 +106,7 @@ function SignUp() {
         </h2>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow-xl rounded-lg sm:px-10 border-t-4 border-amber-400 max-h-[80vh] overflow-y-auto">
+          <div className="bg-white py-8 px-4 shadow-xl rounded-lg sm:px-10 border-t-4 border-yellow-500 max-h-[80vh] overflow-y-auto">
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
                 <div className="bg-red-50 border border-red-500 text-red-500 px-4 py-3 rounded relative">
@@ -140,7 +140,7 @@ function SignUp() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-800 focus:border-red-800"
+                  className="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -155,7 +155,7 @@ function SignUp() {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-800 focus:border-red-800"
+                  className="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -170,14 +170,14 @@ function SignUp() {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-800 focus:border-red-800"
+                  className="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-red-900 to-red-800 hover:from-red-800 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800 ${
+                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-900 to-blue-700 hover:from-blue-800 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 ${
                   isLoading ? 'opacity-75 cursor-not-allowed' : ''
                 }`}
               >
@@ -208,7 +208,7 @@ function SignUp() {
               <div className="mt-6">
                 <Link
                   to="/signin"
-                  className="w-full flex justify-center py-2 px-4 border border-red-800 rounded-md shadow-sm text-sm font-medium text-red-800 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800"
+                  className="w-full flex justify-center py-2 px-4 border border-yellow-600 rounded-md shadow-sm text-sm font-medium text-yellow-600 bg-white hover:bg-yellow-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600"
                 >
                   Sign in instead
                 </Link>

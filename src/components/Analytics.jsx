@@ -156,7 +156,7 @@ function Analytics() {
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Fleet Analytics</h1>
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">Fleet Analytics</h1>
         <p className="text-sm text-gray-500">
           Last updated: {new Date().toLocaleDateString()}
         </p>
