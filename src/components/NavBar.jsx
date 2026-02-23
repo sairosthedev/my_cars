@@ -9,7 +9,7 @@ import {
 import { GiSteeringWheel } from 'react-icons/gi'
 import { supabase } from '../utils/supabaseClient'
 
-function NavBar({ setActiveView }) {
+function NavBar({ setActiveView = () => {} }) {
   const location = useLocation()
   const navigate = useNavigate();
 

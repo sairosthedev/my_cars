@@ -11,10 +11,20 @@ function SignIn() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      navigate('/', { replace: true });
-    }
+    const checkSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
+          navigate('/', { replace: true });
+        } else {
+          localStorage.removeItem('user');
+        }
+      } catch (error) {
+        console.error('Session check error:', error);
+      }
+    };
+
+    checkSession();
   }, [navigate]);
 
   const handleSubmit = async (e) => {

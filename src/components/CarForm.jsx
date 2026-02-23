@@ -45,6 +45,8 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
     },
     notes: ''
   });
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
   
   // State for form validation and error handling
   const [errors, setErrors] = useState({});
@@ -64,8 +66,20 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
   useEffect(() => {
     if (initialData) {
       setFormState(initialData);
+      if (initialData.image_url) {
+        setFormState(prev => ({ ...prev, image: initialData.image_url }));
+        setImagePreview(initialData.image_url);
+      }
     }
   }, [initialData]);
+
+  useEffect(() => {
+    return () => {
+      if (imagePreview.startsWith('blob:')) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
 
   /**
    * Validates all form fields and returns whether the form is valid
@@ -178,8 +192,14 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
       }
     }
 
-    // Image URL Validation
-    if (formState.image) {
+    // Image validation
+    if (imageFile) {
+      if (!imageFile.type.startsWith('image/')) {
+        newErrors.imageFile = 'Please upload an image file';
+      } else if (imageFile.size > 5 * 1024 * 1024) {
+        newErrors.imageFile = 'Image must be 5MB or smaller';
+      }
+    } else if (formState.image) {
       try {
         new URL(formState.image);
       } catch {
@@ -222,13 +242,36 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
 
         console.log('User session:', session);
 
+        let imageUrl = formState.image;
+
+        if (imageFile) {
+          const fileExt = imageFile.name.split('.').pop() || 'jpg';
+          const filePath = `${session.user.id}/${Date.now()}.${fileExt}`;
+          const { error: uploadError } = await supabase.storage
+            .from('car-images')
+            .upload(filePath, imageFile, {
+              cacheControl: '3600',
+              upsert: false,
+              contentType: imageFile.type
+            });
+
+          if (uploadError) {
+            throw uploadError;
+          }
+
+          const { data: publicUrlData } = supabase.storage
+            .from('car-images')
+            .getPublicUrl(filePath);
+          imageUrl = publicUrlData.publicUrl;
+        }
+
         const carData = {
           make: formState.make,
           model: formState.model,
           year: parseInt(formState.year),
           price: parseFloat(formState.price),
           mileage: parseInt(formState.mileage),
-          image: formState.image,
+          image_url: imageUrl || null,
           vin: formState.vin,
           license_plate: formState.licensePlate,
           color: formState.color,
@@ -236,7 +279,9 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
           fuel_type: formState.fuelType,
           last_service_date: formState.lastServiceDate,
           next_service_due: formState.nextServiceDue,
-          insurance: formState.insurance,
+          insurance_provider: formState.insurance.provider,
+          policy_number: formState.insurance.policyNumber,
+          insurance_expiry: formState.insurance.expiryDate,
           notes: formState.notes,
           user_id: session.user.id
         };
@@ -299,6 +344,10 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
       }
     } else {
       const { name, value, type } = e.target;
+      if (name === 'image' && value) {
+        setImageFile(null);
+        setImagePreview('');
+      }
       const processedValue = type === 'number' ? (value === '' ? '' : Number(value)) : value;
       
       // Handle nested insurance fields
@@ -340,6 +389,25 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
         return newErrors;
       });
     }
+  };
+
+  const handleImageFileChange = (e) => {
+    const file = e.target.files?.[0] || null;
+    if (!file) {
+      setImageFile(null);
+      setImagePreview('');
+      return;
+    }
+
+    setImageFile(file);
+    setFormState(prev => ({ ...prev, image: '' }));
+    setImagePreview(URL.createObjectURL(file));
+    setErrors(prev => {
+      const nextErrors = { ...prev };
+      delete nextErrors.image;
+      delete nextErrors.imageFile;
+      return nextErrors;
+    });
   };
 
   /**
@@ -731,9 +799,32 @@ const CarForm = ({ initialData, isSubmitting = false }) => {
               </FormItem>
             </div>
 
-            {/* Image URL */}
+            {/* Image Upload */}
             <FormItem>
-              <FormLabel>Image URL</FormLabel>
+              <FormLabel>Upload Image</FormLabel>
+              <FormControl>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageFileChange}
+                  className={errors.imageFile ? 'border-red-500' : ''}
+                />
+              </FormControl>
+              {imagePreview && (
+                <div className="mt-3">
+                  <img
+                    src={imagePreview}
+                    alt="Selected car"
+                    className="h-32 w-full rounded-md object-cover"
+                  />
+                </div>
+              )}
+              {errors.imageFile && <FormMessage className="text-red-500">{errors.imageFile}</FormMessage>}
+            </FormItem>
+
+            {/* Image URL (optional) */}
+            <FormItem>
+              <FormLabel>Image URL (optional)</FormLabel>
               <FormControl>
                 <Input
                   name="image"

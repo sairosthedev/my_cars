@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick'; // Import Slider from react-slick
 import Stats from './Stats';
 import { supabase } from '../utils/supabaseClient';
@@ -54,14 +55,15 @@ const Dashboard = () => {
   const averageYear = Math.round(cars.reduce((sum, car) => sum + car.year, 0) / cars.length) || 0;
 
   // Slider settings for react-slick
+  const slidesToShow = Math.min(3, Math.max(cars.length, 1));
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: cars.length > slidesToShow,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 2000, // Set autoplay speed to 2 seconds
+    slidesToShow,
+    slidesToScroll: Math.min(1, slidesToShow),
+    autoplay: cars.length > slidesToShow,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 1024,
@@ -92,12 +94,13 @@ const Dashboard = () => {
       />
       <Slider {...settings}>
         {cars.map(car => (
-          <div 
-            key={car.id} 
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+          <Link
+            key={car.id}
+            to={`/car/${car.id}`}
+            className="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
             <img
-              src={car.image || 'https://via.placeholder.com/400x300?text=No+Image'}
+              src={car.image_url || 'https://via.placeholder.com/400x300?text=No+Image'}
               alt={`${car.make} ${car.model}`}
               className="w-full h-48 object-cover"
             />
@@ -106,10 +109,10 @@ const Dashboard = () => {
               <p className="text-gray-600 mt-1">{car.year}</p>
               <div className="mt-4 flex justify-between items-center text-sm text-gray-500">
                 <span>{car.transmission}</span>
-                <span>{car.fuelType}</span>
+                <span>{car.fuel_type}</span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
     </div>

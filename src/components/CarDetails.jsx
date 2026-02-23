@@ -113,8 +113,8 @@ function CarDetails() {
         }}>
           {/* Car header with image and basic info */}
           <div style={{ display: 'flex', gap: '20px', marginBottom: '30px' }}>
-            <img 
-              src={car.image} 
+              <img 
+              src={car.image_url} 
               alt={`${car.make} ${car.model}`} 
               style={{
                 width: '300px',
@@ -180,9 +180,9 @@ function CarDetails() {
                 Insurance Information
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
-                <p><strong>Provider:</strong> {car.insurance?.provider}</p>
-                <p><strong>Policy Number:</strong> {car.insurance?.policyNumber}</p>
-                <p><strong>Expiry Date:</strong> {car.insurance?.expiryDate}</p>
+                <p><strong>Provider:</strong> {car.insurance_provider}</p>
+                <p><strong>Policy Number:</strong> {car.policy_number}</p>
+                <p><strong>Expiry Date:</strong> {car.insurance_expiry}</p>
               </div>
             </section>
 

@@ -47,7 +47,8 @@ function SignUp() {
         options: {
           data: {
             full_name: formData.fullName,
-          }
+          },
+          emailRedirectTo: `${window.location.origin}/auth/callback`
         }
       });
 
@@ -65,13 +66,26 @@ function SignUp() {
         return;
       }
 
-      if (data.user) {
-        localStorage.setItem('user', JSON.stringify(data.user));
+      if (data.session?.user) {
+        localStorage.setItem('user', JSON.stringify(data.session.user));
         navigate('/');
+        return;
       }
+
+      setError('Check your email to confirm your account before signing in.');
+      setIsLoading(false);
     } catch (err) {
       console.error('Sign up error:', err);
-      setError('An unexpected error occurred during sign-up. Please try again.');
+      if (
+        err instanceof TypeError &&
+        (err.message.includes('Failed to fetch') || err.message.includes('NetworkError'))
+      ) {
+        setError(
+          'Network error. Check VITE_SUPABASE_URL/VITE_SUPABASE_ANON_KEY and allow this origin in Supabase Auth URL settings.'
+        );
+      } else {
+        setError('An unexpected error occurred during sign-up. Please try again.');
+      }
       setIsLoading(false);
     }
   };

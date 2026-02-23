@@ -85,7 +85,7 @@ function CarList({ cars, onDelete }) {
             {/* Car image section */}
             <div className="relative h-48">
               <img
-                src={car.image || 'https://via.placeholder.com/400x300?text=No+Image'}
+                src={car.image_url || 'https://via.placeholder.com/400x300?text=No+Image'}
                 alt={`${car.make} ${car.model}`}
                 className="w-full h-full object-cover"
               />
